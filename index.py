@@ -16,6 +16,7 @@ from yahoo_finance import Share
 # How to get specific thing from quote: print getQuotes('AAP')[0]['LastTradePrice']
 
 # c = Commission
+# Change this to whatever your commission from your broker is..
 
 c = 9.99
 
@@ -30,7 +31,7 @@ def percentage(part, whole):
 # Returns current date
 
 def date():
-    dater = time.strftime('%m/%d/%Y %H:%M:%S')
+    dater = time.strftime('%m/%d/%Y')
     return dater
 
 
@@ -71,6 +72,8 @@ class Holding:
 
         tc = self.value - c - self.price_paid * self.shares
         return tc
+
+# Updates the prices for each holding
 
     def update(self, google_data):
         self.price = float(google_data['LastTradePrice'])
@@ -113,7 +116,8 @@ class Portfolio:
         # Total Day Change Readable
 
         tdcr = '$%s' % rounded
-        percent = '%s%%' % round(percentage(rounded, p.total_value() - rounded), 2)
+        percent = '%s%%' % round(percentage(rounded, p.total_value()
+                                 - rounded), 2)
         if perct == False:
             return tdcr
         elif perct == True:
@@ -135,35 +139,55 @@ class Portfolio:
         # Total Change Readable
 
         tcr = '$%s' % rounded
-        percent = '%s%%' % round(percentage(rounded, p.total_value() - rounded), 2)
+        percent = '%s%%' % round(percentage(rounded, p.total_value()
+                                 - rounded), 2)
         if perct == False:
             return tcr
         elif perct == True:
             return percent
-            
         else:
+
             return 'what?'
+
+# Gets the update for each holding.. edit the list with your symbol(s)
 
     def update(self):
         google_data = getQuotes(['GLUU', 'LLNW', 'HACK'])
-        for i in range(0,3):
+
+        # Make this the range for your stocks. If you have 5 stocks the range is 0,5
+
+        for i in range(0, 3):
             self.holdings[i].update(google_data[i])
+
+# Returns the share price of a stock.
 
     def quote(self, symbol):
         return float(self.holdings[symbol].price)
 
+
 # All holdings
 
 p = Portfolio()
-p.addHolding(Holding('GLUU', 110, 5.055))
-p.addHolding(Holding('LLNW', 109, 4.1))
-p.addHolding(Holding('HACK', 16, 29.9099))
+
+# Add your holdings here..
+# Example holding:
+# Symbol, Shares Owned, Price Paid
+# p.addHolding(Holding('AAPL', 110, 129.96))
+# Add as many holdings as you want. Be sure to the holdings for the update function in Portfolio.
+
+# Updates all the prices once
+
 p.update()
+
 
 # Run the site
 
 @route('/')
 def index():
+
+    # Updates the prices everytime you view the site
+
+    p.update()
     my_dict = {
         'holdings': p.total_value_readable(),
         'day_change_percent': p.total_day_change_readable(perct=True),
@@ -172,9 +196,11 @@ def index():
         'total_change_dollar': p.total_change_readable(),
         'date': date(),
         }
-    p.update()
     return template('index', **my_dict)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
-    run(host='0.0.0.0', port=port, debug=True, server='cherrypy')
+
+    # Change host to localhost for local only. Keep it at 0.0.0.0 for public.
+
+    run(host='0.0.0.0', port=port, debug=False, server='cherrypy')

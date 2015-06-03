@@ -7,10 +7,10 @@
         <meta name="author" content="Cody Morton">
         <meta name="robots" content="noindex, nofollow">
         <!-- CSS -->
-        <link href="http://catsarecrits.com/hub1/css/animate.css" rel="stylesheet">
-        <link href="http://catsarecrits.com/hub1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="http://catsarecrits.com/hub1/css/flat-ui-pro.min.css" rel="stylesheet">
-        <link href="http://catsarecrits.com/hub1/css/style.css" rel="stylesheet">
+        <link href="http://catsarecrits.com/hub1/assets/css/animate.css" rel="stylesheet">
+        <link href="http://catsarecrits.com/hub1/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://catsarecrits.com/hub1/assets/css/flat-ui-pro.min.css" rel="stylesheet">
+        <link href="http://catsarecrits.com/hub1/assets/css/style.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -46,12 +46,12 @@
             <div id="quicklinks">
                 <div class="well">
                     <div class="row text-center">
-                        <div class="col-lg-2"><a class="button" href="http://www.facebook.com"><img src="http://catsarecrits.com/hub1/img/thumbs/facebook.png" alt="test"></a></div>
-                        <div class="col-lg-2"><a class="button" href="http://stocktwits.com/"><img src="http://catsarecrits.com/hub1/img/thumbs/stocktwits.png" width="128px" height="128px"></a></div>
-                        <div class="col-lg-2"><a class="button" href="http://www.reddit.com"><img src="http://catsarecrits.com/hub1/img/thumbs/reddit.png"></a></div>
-                        <div class="col-lg-2"><a class="button" href="http://www.twitter.com"><img src="http://catsarecrits.com/hub1/img/thumbs/twitter.png"></a></div>
-                        <div class="col-lg-2"><a class="button" href="https://play.google.com/music/listen"><img src="http://catsarecrits.com/hub1/img/thumbs/gmusic.png"></a></div>
-                        <div class="col-lg-2"><a class="button" href="http://www.netflix.com/"><img src="http://catsarecrits.com/hub1/img/thumbs/netflix.png"></a></div>
+                        <div class="col-lg-2"><a class="button" href="http://www.facebook.com"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/facebook.png" alt="test"></a></div>
+                        <div class="col-lg-2"><a class="button" href="http://stocktwits.com/"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/stocktwits.png" width="128px" height="128px"></a></div>
+                        <div class="col-lg-2"><a class="button" href="http://www.reddit.com"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/reddit.png"></a></div>
+                        <div class="col-lg-2"><a class="button" href="http://www.twitter.com"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/twitter.png"></a></div>
+                        <div class="col-lg-2"><a class="button" href="https://play.google.com/music/listen"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/gmusic.png"></a></div>
+                        <div class="col-lg-2"><a class="button" href="http://www.netflix.com/"><img src="http://catsarecrits.com/hub1/assets/img/thumbs/netflix.png"></a></div>
                     </div>
                 </div>
             </div>
@@ -59,6 +59,6 @@
             </div>
         </body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="http://catsarecrits.com/hub1/js/bootstrap.min.js"></script>
-        <script src="http://catsarecrits.com/hub1/js/js.js"></script>
+        <script src="http://catsarecrits.com/hub1/assets/js/bootstrap.min.js"></script>
+        <script src="http://catsarecrits.com/hub1/assets/js/js.js"></script>
     </html>

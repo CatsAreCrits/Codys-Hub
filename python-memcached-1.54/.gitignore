@@ -1,5 +1,0 @@
-*.pyc
-/dist
-/python_memcached.egg-info
-.tox
-.coverage

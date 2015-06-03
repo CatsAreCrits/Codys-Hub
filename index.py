@@ -152,11 +152,11 @@ class Portfolio:
 # Gets the update for each holding.. edit the list with your symbol(s)
 
     def update(self):
-        google_data = getQuotes(['GLUU', 'LLNW', 'HACK'])
+        google_data = getQuotes(['AAPL'])
 
         # Make this the range for your stocks. If you have 5 stocks the range is 0,5
 
-        for i in range(0, 3):
+        for i in range(0, 1):
             self.holdings[i].update(google_data[i])
 
 # Returns the share price of a stock.

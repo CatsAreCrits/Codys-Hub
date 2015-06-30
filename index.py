@@ -148,15 +148,28 @@ class Portfolio:
         else:
 
             return 'what?'
+def total_true_change(self, perct=False):
+        trueChangeV = p.total_value() - 1200
 
+        rounded = round(trueChangeV, 2)
+
+        # Total True Change Readable
+        ttcr = '$%s' % rounded
+        percentT = '%s%%' % round(percentage(rounded, p.total_value()), 2)
+        if perct == False:
+            return ttcr
+        elif perct == True:
+            return percentT
+        else:
+            return 'what?'
 # Gets the update for each holding.. edit the list with your symbol(s)
 
     def update(self):
-        google_data = getQuotes(['AAPL'])
+        google_data = getQuotes(['GLUU', 'BGMD', 'BGMD', 'HACK'])
 
         # Make this the range for your stocks. If you have 5 stocks the range is 0,5
 
-        for i in range(0, 1):
+        for i in range(0, 4):
             self.holdings[i].update(google_data[i])
 
 # Returns the share price of a stock.
@@ -168,39 +181,30 @@ class Portfolio:
 # All holdings
 
 p = Portfolio()
-
-# Add your holdings here..
-# Example holding:
-# Symbol, Shares Owned, Price Paid
-# p.addHolding(Holding('AAPL', 110, 129.96))
-# Add as many holdings as you want. Be sure to the holdings for the update function in Portfolio.
-
-# Updates all the prices once
-
+p.addHolding(Holding('GLUU', 110, 5.055))
+p.addHolding(Holding('BGMD', 200, 0.71))
+p.addHolding(Holding('BGMD', 398, 0.7123))
+p.addHolding(Holding('HACK', 16, 29.9099))
 p.update()
-
 
 # Run the site
 
 @route('/')
 def index():
-
-    # Updates the prices everytime you view the site
-
-    p.update()
     my_dict = {
         'holdings': p.total_value_readable(),
         'day_change_percent': p.total_day_change_readable(perct=True),
         'day_change_dollar': p.total_day_change_readable(),
-        'total_change_percent': p.total_change_readable(perct=True),
+        'total_change_percent': p.total_true_change(perct=True),
         'total_change_dollar': p.total_change_readable(),
         'date': date(),
+        'gluu_q': getQuotes('GLUU')[0]['LastTradePrice'],
+        'hack_q': getQuotes('HACK')[0]['LastTradePrice'],
+        'bgmd_q': getQuotes('BGMD')[0]['LastTradePrice']
         }
+    p.update()
     return template('index', **my_dict)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
-
-    # Change host to localhost for local only. Keep it at 0.0.0.0 for public.
-
-    run(host='0.0.0.0', port=port, debug=False, server='cherrypy')
+    run(host='0.0.0.0', port=port, debug=True, server='cherrypy')
